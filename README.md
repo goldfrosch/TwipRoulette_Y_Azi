@@ -1,2 +1,5 @@
-# Moa Plugin
-웬 죄다 모아냐 뭘 모을래
+# Plugin BoilerPlate
+
+Version: Spigot 1.16.3
+
+Java 16, Maven
