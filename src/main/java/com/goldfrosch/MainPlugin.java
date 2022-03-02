@@ -10,7 +10,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
-
 @Getter
 @Setter
 public class MainPlugin extends JavaPlugin implements Listener {
