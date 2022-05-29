@@ -1,10 +1,15 @@
 package com.goldfrosch.utils;
 
+import com.goldfrosch.data.buff.BuffType;
 import com.goldfrosch.data.buff.BuffVO;
 import com.goldfrosch.data.buff.BuffUnit;
+import com.goldfrosch.data.entity.EntityVO;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.WitherSkeleton;
+import org.bukkit.entity.Zombie;
 
 import java.util.Objects;
 
@@ -13,6 +18,7 @@ import static com.goldfrosch.utils.ChatUtils.getMessageInMinecraftColor;
 
 @RequiredArgsConstructor
 public class Constants {
+  public final static String COMMAND_TITLE = "game";
   public final static FileConfiguration config = plugin.getConfig();
   public final static String TWIP_KEY = config.getString("twip.y_azi.key");
 
@@ -21,15 +27,20 @@ public class Constants {
   public final static String CONTENT_PREFIX = getMessageInMinecraftColor(Objects.requireNonNull(config.getString("message.prefix")));
 
   public final static BuffVO[] BUFF_LIST = {
-      new BuffVO("독 디버프", 1, BuffUnit.SECOND, 10.0),
-      new BuffVO("화상 디버프", 1, BuffUnit.SECOND, 5.0),
-      new BuffVO("배고픔 디버프", 1, BuffUnit.AMOUNT, 10.0),
-      new BuffVO("배부름 버프", 1, BuffUnit.AMOUNT, 15.0),
-      new BuffVO("뒤돌기", 1, BuffUnit.EMPTY, 15.0),
-      new BuffVO("회복", 1, BuffUnit.AMOUNT, 10.0),
-      new BuffVO("속도 증가", 1, BuffUnit.SECOND, 15.0),
-      new BuffVO("속도 감소", 1, BuffUnit.SECOND, 10.0),
-      new BuffVO("성급함", 1, BuffUnit.SECOND, 5.0),
-      new BuffVO("시야 가리기", 1, BuffUnit.SECOND, 5.0),
+      new BuffVO("독 디버프", 1, 5, BuffUnit.SECOND, 10.0, BuffType.EFFECT),
+      new BuffVO("화상 디버프", 1, 5,  BuffUnit.SECOND, 5.0, BuffType.EFFECT),
+      new BuffVO("속도증가 버프", 1, 5,  BuffUnit.SECOND, 15.0, BuffType.EFFECT),
+      new BuffVO("속도감소 버프", 1, 5,  BuffUnit.SECOND, 10.0, BuffType.EFFECT),
+      new BuffVO("성급함 버프", 1, 5,  BuffUnit.SECOND, 5.0, BuffType.EFFECT),
+      new BuffVO("시야 가리기", 1, 5,  BuffUnit.SECOND, 5.0, BuffType.EFFECT),
+      new BuffVO("회복 버프", 1, 5,  BuffUnit.AMOUNT, 10.0, BuffType.EFFECT),
+      new BuffVO("배고픔 디버프", -5, 5,  BuffUnit.AMOUNT, 10.0, BuffType.HUNGER),
+      new BuffVO("배부름 버프", 5, 5,  BuffUnit.AMOUNT, 15.0, BuffType.HUNGER),
+      new BuffVO("뒤돌기", 0, 0,  BuffUnit.EMPTY, 15.0, BuffType.SPIN),
+  };
+
+  public final static EntityVO[] ENTITY_LIST = {
+      new EntityVO("좀비", EntityType.ZOMBIE, 1),
+      new EntityVO("스켈레톤", EntityType.SKELETON, 1)
   };
 }

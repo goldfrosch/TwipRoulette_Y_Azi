@@ -6,7 +6,9 @@ import org.bukkit.entity.Player;
 
 import java.io.IOException;
 
-import static com.goldfrosch.TwipRoulette.GAME_STATUS;
+import static com.goldfrosch.TwipRoulette.gameStatus;
+import static com.goldfrosch.TwipRoulette.plugin;
+import static com.goldfrosch.utils.Constants.CONTENT_PREFIX;
 import static com.goldfrosch.utils.Constants.TWIP_KEY;
 import static org.bukkit.Bukkit.getServer;
 
@@ -14,12 +16,13 @@ public class TwipUtils {
   public static void DonateRegisterAction() {
     try {
       Twip twip = new Twip(TWIP_KEY);
+      plugin.consoleLog("트윕 연결에 성공했습니다! 즐거운 시간 되세요");
       twip.subscribeDonation((donation -> {
-        if(!GAME_STATUS) {
+        if(!gameStatus) {
           return;
         }
         for(Player player: getServer().getOnlinePlayers()) {
-          player.sendMessage(ChatColor.AQUA + String.valueOf(donation.getAmount()) + "원" +  ChatColor.YELLOW + "후원 감사합니다.");
+          player.sendMessage(CONTENT_PREFIX + ChatColor.AQUA + donation.getAmount() + "원" +  ChatColor.YELLOW + "후원 감사합니다.");
         }
       }));
     } catch (IOException e) {

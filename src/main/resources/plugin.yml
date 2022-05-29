@@ -3,7 +3,11 @@ name: TwipRoulette
 version: 0.0.1-SNAPSHOT
 author: GoldFrosch
 commands:
-  cmd:
+  game:
     description: HO!
     test:
+      description: HOU!
+    spin:
+      description: HOU!
+    start:
       description: HOU!

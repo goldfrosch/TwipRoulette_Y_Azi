@@ -1,7 +1,9 @@
 package com.goldfrosch.data.buff;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+@Getter
 @RequiredArgsConstructor
 public enum BuffUnit {
   EMPTY(""),

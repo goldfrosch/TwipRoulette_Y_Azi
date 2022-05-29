@@ -2,13 +2,15 @@ package com.goldfrosch;
 
 import com.goldfrosch.commands.Commands;
 import com.goldfrosch.events.NewEvent;
-import com.outstandingboy.donationalert.platform.Twip;
 import lombok.Getter;
 import lombok.Setter;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import static com.goldfrosch.utils.Constants.COMMAND_TITLE;
+import static com.goldfrosch.utils.TwipUtils.DonateRegisterAction;
 
 @Getter
 @Setter
@@ -17,7 +19,7 @@ public final class TwipRoulette extends JavaPlugin {
     private PluginDescriptionFile pdfFile = this.getDescription();
     private String pfName = pdfFile.getName() + " v" + pdfFile.getVersion();
 
-    public static boolean GAME_STATUS = false;
+    public static boolean gameStatus = false;
 
     public TwipRoulette() {
         plugin = this;
@@ -31,15 +33,15 @@ public final class TwipRoulette extends JavaPlugin {
         saveConfig();
 
         //트윕 연동
-//        DonateRegisterAction();
+        DonateRegisterAction();
 
         //Event Register
         registerEvent();
 
         //command
-        Commands cmd = new Commands(this,"cmd");
-        getCommand("cmd").setExecutor(cmd);
-        getCommand("cmd").setTabCompleter(cmd);
+        Commands cmd = new Commands(this,COMMAND_TITLE);
+        getCommand(COMMAND_TITLE).setExecutor(cmd);
+        getCommand(COMMAND_TITLE).setTabCompleter(cmd);
 
         consoleLog(pfName+"이 활성화 되었습니다");
         super.onEnable();
