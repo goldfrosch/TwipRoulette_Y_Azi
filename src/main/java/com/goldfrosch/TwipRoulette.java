@@ -2,20 +2,26 @@ package com.goldfrosch;
 
 import com.goldfrosch.commands.Commands;
 import com.goldfrosch.events.NewEvent;
+import com.outstandingboy.donationalert.platform.Twip;
 import lombok.Getter;
 import lombok.Setter;
 
 import org.bukkit.Bukkit;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 @Getter
 @Setter
-public class MainPlugin extends JavaPlugin implements Listener {
+public final class TwipRoulette extends JavaPlugin {
+    public static TwipRoulette plugin;
     private PluginDescriptionFile pdfFile = this.getDescription();
     private String pfName = pdfFile.getName() + " v" + pdfFile.getVersion();
 
+    public static boolean GAME_STATUS = false;
+
+    public TwipRoulette() {
+        plugin = this;
+    }
     @Override
     public void onEnable(){
         //config 파일 있는지 파악 후 생성
@@ -23,6 +29,9 @@ public class MainPlugin extends JavaPlugin implements Listener {
             getConfig().options().copyDefaults(true);
         }
         saveConfig();
+
+        //트윕 연동
+//        DonateRegisterAction();
 
         //Event Register
         registerEvent();
@@ -46,7 +55,11 @@ public class MainPlugin extends JavaPlugin implements Listener {
         getLogger().info(msg);
     }
 
+    public void reload() {
+        reloadConfig();
+    }
+
     public void registerEvent() {
-        Bukkit.getPluginManager().registerEvents(new NewEvent(this),this);
+        Bukkit.getPluginManager().registerEvents(new NewEvent(),this);
     }
 }

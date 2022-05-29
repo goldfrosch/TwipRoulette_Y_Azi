@@ -1,8 +1,9 @@
-main: com.goldfrosch.MainPlugin
-name: BoilerPlatePlugin
+main: com.goldfrosch.TwipRoulette
+name: TwipRoulette
 version: 0.0.1-SNAPSHOT
-api-version: 1.18.1
 author: GoldFrosch
 commands:
   cmd:
     description: HO!
+    test:
+      description: HOU!
