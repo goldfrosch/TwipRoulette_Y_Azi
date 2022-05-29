@@ -1,16 +1,16 @@
 package com.goldfrosch.commands;
 
-import com.goldfrosch.MainPlugin;
+import com.goldfrosch.TwipRoulette;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 
 import java.util.List;
 
 public abstract class AbstractCommand implements TabExecutor {
-    protected MainPlugin plugin;
+    protected TwipRoulette plugin;
     private String Command;
 
-    public AbstractCommand(MainPlugin plugin, String Command) {
+    public AbstractCommand(TwipRoulette plugin, String Command) {
         this.plugin = plugin;
         this.Command = Command;
     }

@@ -1,13 +1,15 @@
 package com.goldfrosch.commands;
 
-import com.goldfrosch.MainPlugin;
+import com.goldfrosch.TwipRoulette;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.List;
 
+import static com.goldfrosch.utils.RouletteUtils.SetPlayerBuffInRoulette;
+
 public class Commands extends AbstractCommand {
-    public Commands(MainPlugin plugin, String Command) {
+    public Commands(TwipRoulette plugin, String Command) {
         super(plugin,Command);
     }
 
@@ -25,6 +27,10 @@ public class Commands extends AbstractCommand {
             if(label.equalsIgnoreCase("cmd")){
                 if(args.length == 0){
                     player.sendMessage(prefix + "어쩔 티비");
+                } else {
+                    if(args[1].equalsIgnoreCase("test")) {
+                        SetPlayerBuffInRoulette(player);
+                    }
                 }
             }
         }
