@@ -1,2 +1,5 @@
-Message:
-  prefix: "&fTEST"
+message:
+  prefix: "&5[ Twip ] &f"
+twip:
+  y_azi:
+    key: "QYY6MVqvQn"

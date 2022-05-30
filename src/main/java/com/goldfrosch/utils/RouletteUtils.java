@@ -11,4 +11,12 @@ public class RouletteUtils {
     player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 5, 5);
     player.sendTitle(ROULETTE_TITLE, msg, 1, 1 ,1);
   }
+
+  public static void PlayerRouletteRoll(Player player, int money) {
+    if (money == 3500) {
+      BuffUtils.PlayerBuffInRoulette(player);
+    } else if (money == 8500) {
+      EntityUtils.PlayerSpawnEntityRoulette(player);
+    }
+  }
 }

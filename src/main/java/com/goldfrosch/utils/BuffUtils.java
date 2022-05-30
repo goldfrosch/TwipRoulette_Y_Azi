@@ -53,7 +53,7 @@ public class BuffUtils {
     }
   }
 
-  public static void SetPlayerBuffInRoulette(Player player) {
+  public static void PlayerBuffInRoulette(Player player) {
     var random = Math.random() * 100;
     for (int i = 0; i < BUFF_LIST.length; i++) {
       var chance = 0;

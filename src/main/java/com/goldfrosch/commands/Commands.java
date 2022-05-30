@@ -30,7 +30,7 @@ public class Commands extends AbstractCommand {
                 } else {
                     switch (args[0]) {
                         case "test":
-                            BuffUtils.SetPlayerBuffInRoulette(player);
+                            BuffUtils.PlayerBuffInRoulette(player);
                             break;
                         case "spin":
                             BuffUtils.setPlayerRotate(player);
