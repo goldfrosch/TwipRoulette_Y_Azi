@@ -3,14 +3,18 @@ package com.goldfrosch.utils;
 import com.goldfrosch.data.buff.BuffType;
 import com.goldfrosch.data.buff.BuffVO;
 import com.goldfrosch.data.buff.BuffUnit;
+import com.goldfrosch.data.disaster.DisasterVO;
 import com.goldfrosch.data.entity.EntityVO;
+import com.goldfrosch.data.item.ItemVO;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.WitherSkeleton;
 import org.bukkit.entity.Zombie;
 
+import java.util.List;
 import java.util.Objects;
 
 import static com.goldfrosch.TwipRoulette.plugin;
@@ -25,6 +29,11 @@ public class Constants {
   public final static String ROULETTE_TITLE = ChatColor.AQUA + "[ " + ChatColor.BLUE + "룰렛 결과" + ChatColor.AQUA + " ]";
 
   public final static String CONTENT_PREFIX = getMessageInMinecraftColor(Objects.requireNonNull(config.getString("message.prefix")));
+
+  public final static String COMMON_RANK = String.valueOf(ChatColor.GRAY);
+  public final static String RARE_RANK = String.valueOf(ChatColor.AQUA);
+  public final static String EPIC_RANK = String.valueOf(ChatColor.LIGHT_PURPLE);
+  public final static String LEGEND_RANK = String.valueOf(ChatColor.GOLD);
 
   public final static BuffVO[] BUFF_LIST = {
       new BuffVO("독 디버프", 2, 10, BuffUnit.SECOND, 10.0, BuffType.EFFECT),
@@ -56,4 +65,16 @@ public class Constants {
   };
 
   public final static EntityVO VILLAGER_ENTITY = new EntityVO("주민", EntityType.VILLAGER, 1);
+  
+  public final static DisasterVO[] DISASTER_LIST = {
+      new DisasterVO("무작위 날씨", 20.0),
+      new DisasterVO("용암 배치", 18.0),
+      new DisasterVO("지구 던지기", 10.0),
+      new DisasterVO("근처 몹 죽이기", 5.0),
+      new DisasterVO("시간 변경", 5.0),
+      new DisasterVO("즉사", 2.0),
+      new DisasterVO("TNT 소환", 10.0),
+      new DisasterVO("보스 등장", 20.0),
+      new DisasterVO("잠수!", 10.0),
+  };
 }

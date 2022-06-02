@@ -7,7 +7,7 @@ import org.bukkit.entity.EntityType;
 @Getter
 @RequiredArgsConstructor
 public class EntityVO {
-  private final String title;
+  private final String key;
 
   private final EntityType entity;
 

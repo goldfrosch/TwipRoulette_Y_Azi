@@ -2,6 +2,8 @@ package com.goldfrosch.commands;
 
 import com.goldfrosch.TwipRoulette;
 import com.goldfrosch.utils.BuffUtils;
+import com.goldfrosch.utils.DisasterUtils;
+import com.goldfrosch.utils.RouletteUtils;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -30,10 +32,14 @@ public class Commands extends AbstractCommand {
                 } else {
                     switch (args[0]) {
                         case "test":
-                            BuffUtils.PlayerBuffInRoulette(player);
+                            DisasterUtils.createWaterJail(player);
+                            break;
+                        case "disaster":
+                            DisasterUtils.setPlayerRandomDisaster(player);
                             break;
                         case "spin":
                             BuffUtils.setPlayerRotate(player);
+                            break;
                         case "start":
                             break;
                         default:

@@ -7,7 +7,7 @@ import static com.goldfrosch.utils.Constants.*;
 
 public class EntityUtils {
   public static String getMessage(EntityVO data) {
-    return data.getTitle() + " " + data.getAmount() + "마리 소환";
+    return data.getKey() + " " + data.getAmount() + "마리 소환";
   }
   
   public static void SpawnEntityOnPlayer(Player player, EntityVO entity) {
