@@ -32,7 +32,7 @@ public class Commands extends AbstractCommand {
                 } else {
                     switch (args[0]) {
                         case "test":
-                            DisasterUtils.createWaterJail(player);
+                            DisasterUtils.setAnvilDrop(player);
                             break;
                         case "disaster":
                             DisasterUtils.setPlayerRandomDisaster(player);

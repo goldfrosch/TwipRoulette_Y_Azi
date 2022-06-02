@@ -5,6 +5,7 @@ import com.goldfrosch.data.buff.BuffVO;
 import com.goldfrosch.data.buff.BuffUnit;
 import com.goldfrosch.data.disaster.DisasterVO;
 import com.goldfrosch.data.entity.EntityVO;
+import com.goldfrosch.data.item.ItemData;
 import com.goldfrosch.data.item.ItemVO;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.ChatColor;
@@ -31,9 +32,6 @@ public class Constants {
   public final static String CONTENT_PREFIX = getMessageInMinecraftColor(Objects.requireNonNull(config.getString("message.prefix")));
 
   public final static String COMMON_RANK = String.valueOf(ChatColor.GRAY);
-  public final static String RARE_RANK = String.valueOf(ChatColor.AQUA);
-  public final static String EPIC_RANK = String.valueOf(ChatColor.LIGHT_PURPLE);
-  public final static String LEGEND_RANK = String.valueOf(ChatColor.GOLD);
 
   public final static BuffVO[] BUFF_LIST = {
       new BuffVO("독 디버프", 2, 10, BuffUnit.SECOND, 10.0, BuffType.EFFECT),
@@ -76,5 +74,24 @@ public class Constants {
       new DisasterVO("TNT 소환", 10.0),
       new DisasterVO("보스 등장", 20.0),
       new DisasterVO("잠수!", 10.0),
+  };
+
+  public final static ItemVO[] ITEM_LIST = {
+      new ItemVO("랜덤 꽝 아이템", 30.0, ItemData.getRandomCommonItem()),
+      new ItemVO("철 방어구", 10.0, ItemData.RandomIronArmor()),
+      new ItemVO("다이아 방어구", 2.0, ItemData.RandomDiamondArmor()),
+      new ItemVO("식량", 5.0, ItemData.CustomMeat()),
+      new ItemVO("아이템 삭제", 6.0, null),
+      new ItemVO("물약", 2.0, null),
+      new ItemVO("나무 도구", 15.0, ItemData.RandomWoodTool()),
+      new ItemVO("철 도구", 8.0, ItemData.RandomIronTool()),
+      new ItemVO("다이아 도구", 2.0, ItemData.RandomDiamondTool()),
+      new ItemVO("인첸트 다이아 도구", 1.0, ItemData.randomEnchantTool(ItemData.RandomDiamondTool())),
+      new ItemVO("불사의 토템", 1.0, ItemData.getTotem()),
+      new ItemVO("인벤 세이브 10분", 1.0, null),
+      new ItemVO("인첸트 다이아 방어구", 1.0, ItemData.randomEnchantArmor(ItemData.RandomDiamondArmor())),
+      new ItemVO("인첸트 철 방어구", 2.0, ItemData.randomEnchantArmor(ItemData.RandomIronArmor())),
+      new ItemVO("인첸트 철 도구", 2.0, ItemData.randomEnchantTool(ItemData.RandomIronTool())),
+      new ItemVO("가죽 방어구", 12.0, ItemData.RandomLeatherArmor()),
   };
 }

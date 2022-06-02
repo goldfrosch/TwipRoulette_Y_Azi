@@ -3,9 +3,6 @@ package com.goldfrosch.utils;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
-import java.util.List;
-
-import static com.goldfrosch.utils.Constants.DISASTER_LIST;
 import static com.goldfrosch.utils.Constants.ROULETTE_TITLE;
 
 public class RouletteUtils {
@@ -18,8 +15,12 @@ public class RouletteUtils {
   public static void PlayerRouletteRoll(Player player, Long money) {
     if (money == 3500) {
       BuffUtils.PlayerBuffInRoulette(player);
+    } else if (money == 5500) {
+      ItemUtils.getRandomItem(player);
     } else if (money == 8500) {
       EntityUtils.PlayerSpawnEntityRoulette(player);
+    } else if (money == 35000) {
+      DisasterUtils.setPlayerRandomDisaster(player);
     }
   }
 }

@@ -2,6 +2,7 @@ main: com.goldfrosch.TwipRoulette
 name: TwipRoulette
 version: 0.0.1-SNAPSHOT
 author: GoldFrosch
+depend: [LibsDisguises]
 commands:
   game:
     description: HO!

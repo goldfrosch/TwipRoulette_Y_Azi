@@ -18,11 +18,15 @@ public class TwipUtils {
       Twip twip = new Twip(TWIP_KEY);
       plugin.consoleLog("트윕 연결에 성공했습니다! 즐거운 시간 되세요");
       twip.subscribeDonation((donation -> {
-        if(gameStatus) {
-          for(Player player: getServer().getOnlinePlayers()) {
+//        if(gameStatus) {
+//          for(Player player: getServer().getOnlinePlayers()) {
 //            player.sendMessage(CONTENT_PREFIX + ChatColor.AQUA + donation.getAmount() + "원" +  ChatColor.YELLOW + "후원 감사합니다.");
-            RouletteUtils.PlayerRouletteRoll(player, donation.getAmount());
-          }
+//            RouletteUtils.PlayerRouletteRoll(player, donation.getAmount());
+//          }
+//        }
+        for(Player player: getServer().getOnlinePlayers()) {
+          player.sendMessage(CONTENT_PREFIX + ChatColor.AQUA + donation.getAmount() + "원" +  ChatColor.YELLOW + "후원 감사합니다.");
+          RouletteUtils.PlayerRouletteRoll(player, donation.getAmount());
         }
       }));
     } catch (IOException e) {
