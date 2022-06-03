@@ -5,6 +5,7 @@ import me.libraryaddict.disguise.disguisetypes.PlayerDisguise;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.*;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,35 +93,33 @@ public class DisasterUtils {
     waterBomb.setCustomName("뭘 봐");
     waterBomb.setVariant(Axolotl.Variant.BLUE);
 
-    Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> {
-      setEntityWaterInRadius(waterBomb);
-      player.setRemainingAir(0);
-      player.playSound(player.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 1, 1);
-      player.spawnParticle(Particle.EXPLOSION_LARGE, waterBomb.getLocation(), 2);
-      waterBomb.setHealth(0);
-    }, 20 * 2);
+    new BukkitRunnable() {
+      @Override
+      public void run() {
+        setEntityWaterInRadius(waterBomb);
+        player.setRemainingAir(0);
+        player.playSound(player.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 1, 1);
+        player.spawnParticle(Particle.EXPLOSION_LARGE, waterBomb.getLocation(), 2);
+        waterBomb.setHealth(0);
+      }
+    }.runTaskLater(plugin, 20L);
   }
 
   public static void spawnBossEntity(Player player) {
-    EntityType[] list = {
-        EntityType.RAVAGER,
-        EntityType.PIGLIN_BRUTE,
-        EntityType.CAVE_SPIDER
-    };
-
     if (player.getLocation().getBlock().getType().equals(Material.WATER)) {
       player.getWorld().spawnEntity(player.getLocation(), EntityType.GUARDIAN);
       player.getWorld().spawnEntity(player.getLocation(), EntityType.GUARDIAN);
     } else {
-      var random = new Random().nextInt(list.length);
-
-      if(random < 2) {
-        player.getWorld().spawnEntity(player.getLocation(), list[random]);
+      var random = new Random().nextInt(3);
+      if(random == 0) {
+        player.getWorld().spawnEntity(player.getLocation(), EntityType.RAVAGER);
+      } else if(random == 1) {
+        player.getWorld().spawnEntity(player.getLocation(), EntityType.VINDICATOR);
       } else {
-        player.getWorld().spawnEntity(player.getLocation(), list[random]);
-        player.getWorld().spawnEntity(player.getLocation(), list[random]);
-        player.getWorld().spawnEntity(player.getLocation(), list[random]);
-        player.getWorld().spawnEntity(player.getLocation(), list[random]);
+        player.getWorld().spawnEntity(player.getLocation(), EntityType.CAVE_SPIDER);
+        player.getWorld().spawnEntity(player.getLocation(), EntityType.CAVE_SPIDER);
+        player.getWorld().spawnEntity(player.getLocation(), EntityType.CAVE_SPIDER);
+        player.getWorld().spawnEntity(player.getLocation(), EntityType.CAVE_SPIDER);
       }
     }
 
@@ -143,11 +142,6 @@ public class DisasterUtils {
     brother3.setBaby();
     brother4.setBaby();
 
-    brother1.setHealth(40);
-    brother2.setHealth(40);
-    brother3.setHealth(40);
-    brother4.setHealth(40);
-
     DisguiseAPI.disguiseEntity(brother1, new PlayerDisguise("Y_noeul"));
     DisguiseAPI.disguiseEntity(brother2, new PlayerDisguise("Y_noeul"));
     DisguiseAPI.disguiseEntity(brother3, new PlayerDisguise("Y_noeul"));
@@ -156,6 +150,8 @@ public class DisasterUtils {
 
 
   public static void playDisaster(Player player, int key) {
+    RouletteUtils.ShowRouletteResultTitleMsg(player, DISASTER_LIST[key].getKey());
+    player.sendMessage(CONTENT_PREFIX + DISASTER_LIST[key].getKey());
     switch (key) {
       case 0:
         player.sendMessage(CONTENT_PREFIX + "땡!");
@@ -176,6 +172,7 @@ public class DisasterUtils {
       case 4:
         player.sendMessage(CONTENT_PREFIX + "가족과 즐거운 시간 보내세요~");
         spawnBrothers(player);
+        break;
       case 5:
         player.sendMessage(CONTENT_PREFIX + "- ㅋ -");
         player.setHealth(0);
@@ -187,9 +184,11 @@ public class DisasterUtils {
       case 7:
         player.sendMessage(CONTENT_PREFIX + "강력한 몬스터가 접근합니다");
         spawnBossEntity(player);
+        break;
       case 8:
         player.sendMessage(CONTENT_PREFIX + "귀여운 아홀로틀이다");
         createWaterJail(player);
+        break;
     }
   }
 

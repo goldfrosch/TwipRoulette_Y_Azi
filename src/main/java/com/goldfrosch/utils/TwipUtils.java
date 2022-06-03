@@ -3,6 +3,7 @@ package com.goldfrosch.utils;
 import com.outstandingboy.donationalert.platform.Twip;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.IOException;
 
@@ -18,16 +19,18 @@ public class TwipUtils {
       Twip twip = new Twip(TWIP_KEY);
       plugin.consoleLog("트윕 연결에 성공했습니다! 즐거운 시간 되세요");
       twip.subscribeDonation((donation -> {
-//        if(gameStatus) {
-//          for(Player player: getServer().getOnlinePlayers()) {
-//            player.sendMessage(CONTENT_PREFIX + ChatColor.AQUA + donation.getAmount() + "원" +  ChatColor.YELLOW + "후원 감사합니다.");
-//            RouletteUtils.PlayerRouletteRoll(player, donation.getAmount());
-//          }
-//        }
-        for(Player player: getServer().getOnlinePlayers()) {
-          player.sendMessage(CONTENT_PREFIX + ChatColor.AQUA + donation.getAmount() + "원" +  ChatColor.YELLOW + "후원 감사합니다.");
-          RouletteUtils.PlayerRouletteRoll(player, donation.getAmount());
-        }
+        new BukkitRunnable() {
+          @Override
+          public void run() {
+            if(gameStatus) {
+              for(Player player: getServer().getOnlinePlayers()) {
+                player.sendMessage(CONTENT_PREFIX + ChatColor.AQUA + donation.getAmount() + "원" +  ChatColor.YELLOW + "후원 감사합니다.");
+                RouletteUtils.PlayerRouletteRoll(player, donation.getAmount());
+              }
+            }
+          }
+        }.runTaskLater(plugin, 1);
+
       }));
     } catch (IOException e) {
       for(Player player: getServer().getOnlinePlayers()) {

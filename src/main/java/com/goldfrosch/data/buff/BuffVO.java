@@ -25,7 +25,7 @@ public class BuffVO {
   }
 
   public void setPlayerBurn(Player player) {
-    player.setFireTicks(buffTime);
+    player.setFireTicks(buffTime * 20);
   }
 
   public void setPlayerHunger(Player player) {

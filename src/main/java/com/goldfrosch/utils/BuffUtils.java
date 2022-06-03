@@ -6,7 +6,9 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffectType;
 
+import static com.goldfrosch.TwipRoulette.plugin;
 import static com.goldfrosch.utils.Constants.BUFF_LIST;
+import static com.goldfrosch.utils.Constants.CONTENT_PREFIX;
 
 public class BuffUtils {
   public static void setPlayerRotate(Player player) {
@@ -15,11 +17,13 @@ public class BuffUtils {
     Location goal = new Location(player.getWorld(), loc.getX(), loc.getY(), loc.getZ(), -loc.getYaw(), -loc.getPitch());
     player.teleport(goal);
   }
+
   private static void getWinningResult(Player player, int i) {
     BuffVO buff = BUFF_LIST[i];
-    String msg = buff.getKey() + " " + (buff.getBuffTime() == 0 ? buff.getBuffTime() : "") + buff.getUnit().getValue();
+    String msg = buff.getKey() + " " + (buff.getBuffTime() != 0 ? buff.getBuffTime() : "") + buff.getUnit().getValue();
 
     RouletteUtils.ShowRouletteResultTitleMsg(player, msg);
+    player.sendMessage(CONTENT_PREFIX + msg);
 
     if (buff.getBuffType().equals(BuffType.EFFECT)) {
       switch (i) {

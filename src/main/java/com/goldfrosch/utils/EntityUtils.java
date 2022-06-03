@@ -3,6 +3,7 @@ package com.goldfrosch.utils;
 import com.goldfrosch.data.entity.EntityVO;
 import org.bukkit.entity.Player;
 
+import static com.goldfrosch.TwipRoulette.plugin;
 import static com.goldfrosch.utils.Constants.*;
 
 public class EntityUtils {
@@ -13,6 +14,7 @@ public class EntityUtils {
   public static void SpawnEntityOnPlayer(Player player, EntityVO entity) {
     player.getWorld().spawnEntity(player.getLocation(), entity.getEntity());
     RouletteUtils.ShowRouletteResultTitleMsg(player, getMessage(entity));
+    player.sendMessage(CONTENT_PREFIX + getMessage(entity));
   }
 
   public static EntityVO getRandomEntityVo(EntityVO[] entityList) {

@@ -2,12 +2,20 @@ main: com.goldfrosch.TwipRoulette
 name: TwipRoulette
 version: 0.0.1-SNAPSHOT
 author: GoldFrosch
+api-version: 1.18
 depend: [LibsDisguises]
 commands:
   game:
     description: HO!
     test:
-      description: HOU!
+      buff:
+        description: HOU!
+      item:
+        description: HOU!
+      monster:
+        description: HOU!
+      disaster:
+        description: HOU!
     disaster:
       description: HOU!!
     spin:

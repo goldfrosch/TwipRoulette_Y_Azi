@@ -9,7 +9,7 @@ public class RouletteUtils {
 
   static void ShowRouletteResultTitleMsg(Player player, String msg) {
     player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 5, 5);
-    player.sendTitle(ROULETTE_TITLE, msg, 1, 1 ,1);
+    player.sendTitle(ROULETTE_TITLE, msg, 20, 20 ,20);
   }
 
   public static void PlayerRouletteRoll(Player player, Long money) {

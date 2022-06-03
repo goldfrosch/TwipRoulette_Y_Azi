@@ -14,6 +14,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.WitherSkeleton;
 import org.bukkit.entity.Zombie;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 import java.util.Objects;
@@ -35,14 +36,14 @@ public class Constants {
 
   public final static BuffVO[] BUFF_LIST = {
       new BuffVO("독 디버프", 2, 10, BuffUnit.SECOND, 10.0, BuffType.EFFECT),
-      new BuffVO("화상 디버프", 1, 5,  BuffUnit.SECOND, 5.0, BuffType.EFFECT),
+      new BuffVO("화상 디버프", 1, 5,  BuffUnit.SECOND, 5.0, BuffType.FIRE),
       new BuffVO("속도증가 버프", 1, 7,  BuffUnit.SECOND, 15.0, BuffType.EFFECT),
       new BuffVO("속도감소 버프", 1, 7,  BuffUnit.SECOND, 10.0, BuffType.EFFECT),
       new BuffVO("성급함 버프", 1, 5,  BuffUnit.SECOND, 5.0, BuffType.EFFECT),
       new BuffVO("시야 가리기", 1, 10,  BuffUnit.SECOND, 5.0, BuffType.EFFECT),
-      new BuffVO("회복 버프", 1, 5,  BuffUnit.AMOUNT, 10.0, BuffType.EFFECT),
+      new BuffVO("회복 버프", 1, 5,  BuffUnit.AMOUNT, 15.0, BuffType.EFFECT),
       new BuffVO("배고픔 디버프", -5, 5,  BuffUnit.AMOUNT, 10.0, BuffType.HUNGER),
-      new BuffVO("배부름 버프", 5, 5,  BuffUnit.AMOUNT, 15.0, BuffType.HUNGER),
+      new BuffVO("배부름 버프", 5, 5,  BuffUnit.AMOUNT, 10.0, BuffType.HUNGER),
       new BuffVO("뒤돌기", 0, 0,  BuffUnit.EMPTY, 15.0, BuffType.SPIN),
   };
 
@@ -65,11 +66,11 @@ public class Constants {
   public final static EntityVO VILLAGER_ENTITY = new EntityVO("주민", EntityType.VILLAGER, 1);
   
   public final static DisasterVO[] DISASTER_LIST = {
-      new DisasterVO("무작위 날씨", 20.0),
+      new DisasterVO("모루 떨구기", 12.0),
       new DisasterVO("용암 배치", 18.0),
-      new DisasterVO("지구 던지기", 10.0),
+      new DisasterVO("지구 던지기", 8.0),
       new DisasterVO("근처 몹 죽이기", 5.0),
-      new DisasterVO("시간 변경", 5.0),
+      new DisasterVO("가족과 시간을", 15.0),
       new DisasterVO("즉사", 2.0),
       new DisasterVO("TNT 소환", 10.0),
       new DisasterVO("보스 등장", 20.0),
@@ -82,7 +83,7 @@ public class Constants {
       new ItemVO("다이아 방어구", 2.0, ItemData.RandomDiamondArmor()),
       new ItemVO("식량", 5.0, ItemData.CustomMeat()),
       new ItemVO("아이템 삭제", 6.0, null),
-      new ItemVO("물약", 2.0, null),
+      new ItemVO("양동이", 2.0, new ItemStack(Material.AXOLOTL_BUCKET, 1)),
       new ItemVO("나무 도구", 15.0, ItemData.RandomWoodTool()),
       new ItemVO("철 도구", 8.0, ItemData.RandomIronTool()),
       new ItemVO("다이아 도구", 2.0, ItemData.RandomDiamondTool()),
