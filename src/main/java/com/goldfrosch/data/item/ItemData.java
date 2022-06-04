@@ -167,9 +167,7 @@ public class ItemData {
   }
 
   public static Enchantment getRandomEnchantment(Enchantment[] enchants) {
-    var random = new Random().nextInt(enchants.length);
-
-    return enchants[random];
+    return enchants[new Random().nextInt(enchants.length)];
   }
 
   public static ItemStack randomEnchantArmor(ItemStack item) {
